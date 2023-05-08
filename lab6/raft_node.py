@@ -172,9 +172,13 @@ class Node:
             Returns True after the entry is committed to the leader log and False on any problems
         """
         print(f"Leader received log '{log}' from client")
-        self.pending_entry = log
-        self.append_entries()
-        return True
+        try:
+            self.pending_entry = log
+            self.append_entries()
+            return True
+        except Exception as E:
+            print('Error on receiving logs', E)
+            return False
 
 
 if __name__ == '__main__':
