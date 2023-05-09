@@ -86,7 +86,7 @@ class Node:
             print('Leader')
         else:
             self.reset_election_timer()
-            print('Candidate')
+            print('Follower')
 
         while self.is_leader():
             self.append_entries()
